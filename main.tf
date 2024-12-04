@@ -15,8 +15,8 @@ resource "azurerm_resource_group" "resource_group" {
 
 module "cae" {
   source                             = "./modules/container_app_environment"
+  infrastructure_subnet_id           = module.virtual_network.app_subnet_id
   infrastructure_resource_group_name = local.infrastructure_resource_group_name
-  infrastructure_subnet_id           = local.infrastructure_subnet_id
   location                           = local.location
   log_analytics_workspace_name       = local.log_analytics_workspace_name
   container_app_environment_name     = local.container_app_environment_name
@@ -33,4 +33,5 @@ module "virtual_network" {
   address_space        = var.virtual_network_address_space
   subnets              = var.virtual_network_subnets
 
+  tags = local.tags
 }
