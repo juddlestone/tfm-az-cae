@@ -14,16 +14,16 @@ variable "resource_group_name" {
 }
 
 variable "subnets" {
-  description = "A map of subnets that are used in the virtual network."
+  description = "A map of subnets to create in the virtual network."
   type = map(object({
     address_prefix = string
     delegation = list(object({
-      name                    = string
-      service_delegation_name = string
-      actions                 = list(string)
+      name    = string
+      actions = list(string)
     }))
   }))
 }
+
 
 variable "tags" {
   description = "A map of tags to add to all resources."

@@ -38,9 +38,8 @@ variable "virtual_network_subnets" {
   type = map(object({
     address_prefix = string
     delegation = list(object({
-      name                    = string
-      service_delegation_name = string
-      actions                 = list(string)
+      name    = string
+      actions = list(string)
     }))
   }))
 }
