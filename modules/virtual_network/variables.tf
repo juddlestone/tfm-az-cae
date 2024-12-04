@@ -1,0 +1,36 @@
+variable "address_space" {
+  description = "The address space that is used the virtual network."
+  type        = list(string)
+}
+
+variable "location" {
+  description = "The location in which to create the resources."
+  type        = string
+}
+
+variable "resource_group_name" {
+  description = "The name of the resource group in which to create the resources."
+  type        = string
+}
+
+variable "subnets" {
+  description = "A map of subnets that are used in the virtual network."
+  type = map(object({
+    address_prefix = string
+    delegation = list(object({
+      name                    = string
+      service_delegation_name = string
+      actions                 = list(string)
+    }))
+  }))
+}
+
+variable "tags" {
+  description = "A map of tags to add to all resources."
+  type        = map(string)
+}
+
+variable "virtual_network_name" {
+  description = "The name of the virtual network."
+  type        = string
+}
