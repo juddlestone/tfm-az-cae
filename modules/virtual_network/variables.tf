@@ -19,7 +19,7 @@ variable "subnets" {
     address_prefix = list(string)
     delegation = list(object({
       name    = string
-      actions = list(string)
+      actions = optional(list(string))
     }))
   }))
 }
